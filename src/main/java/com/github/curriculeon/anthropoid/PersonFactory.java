@@ -3,9 +3,11 @@ package com.github.curriculeon.anthropoid;
 import com.github.curriculeon.tools.RandomUtils;
 import com.github.curriculeon.tools.StringUtils;
 
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -61,6 +63,8 @@ public final class PersonFactory {
      * @return - Stream representation of collection of Person objects
      */ // TODO
     public Stream<Person> createPersonStream(int streamCount) {
-        return null;
+        return Stream
+                .generate(this::createRandomPerson)
+                .limit(streamCount);
     }
 }
